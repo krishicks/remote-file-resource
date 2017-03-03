@@ -25,8 +25,8 @@ jobs:
     plan:
       - get: remote-file-resource
         passed: [test]
-      - task: build-image
-        file: remote-file-resource/ci/build-image.yml
+      - task: build-resource
+        file: remote-file-resource/ci/build-resource.yml
       - put: remote-file-resource-image
         params:
           build: built-resource
