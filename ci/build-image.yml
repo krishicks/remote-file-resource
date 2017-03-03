@@ -20,7 +20,7 @@ run:
   - |
     root=$PWD
 
-    export GOPATH=$root/gopath
+    export GOPATH=$root/go
     export PATH=$GOPATH/bin:$PATH
 
     build_dir=$root/built-resource
