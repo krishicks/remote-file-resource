@@ -17,3 +17,5 @@ Places the downloaded file in the destination with the provided filename.
 #### Parameters
 
 * `filename`: *Required.* The filename that will be used for the downloaded file.
+
+### `out`: Not implemented.
