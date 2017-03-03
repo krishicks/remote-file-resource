@@ -29,4 +29,4 @@ jobs:
         file: remote-file-resource/ci/build-image.yml
       - put: remote-file-resource-image
         params:
-          build: built-image
+          build: built-resource
