@@ -24,8 +24,6 @@ jobs:
   - name: publish-image
     plan:
       - get: remote-file-resource
-        params:
-          submodules: none
         passed: [test]
       - task: build-image
         file: remote-file-resource/ci/build-image.yml
