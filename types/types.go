@@ -2,7 +2,7 @@ package types
 
 type CheckRequest struct {
 	Source  Source  `json:"source"`
-	Version Version `json:"version"`
+	Version Version `json:"version,omitempty"`
 }
 
 type Source struct {
@@ -10,9 +10,9 @@ type Source struct {
 }
 
 type InRequest struct {
-	Source  Source  `json:"source"`
-	Version Version `json:"version"`
-	Params  InParams
+	Source  Source   `json:"source"`
+	Version Version  `json:"version,omitempty"`
+	Params  InParams `json:"params,omitempty"`
 }
 
 type InParams struct {
