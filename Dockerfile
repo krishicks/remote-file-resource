@@ -1,4 +1,4 @@
-FROM busybox
+FROM alpine
 
 ADD assets/ /opt/resource/
 
