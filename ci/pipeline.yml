@@ -1,0 +1,34 @@
+resources:
+  - name: remote-file-resource
+    type: git
+    source:
+      uri: git://github.com/krishicks/remote-file-resource
+      branch: master
+
+  - name: remote-file-resource-image
+    type: docker-image
+    source:
+      username: {{docker-username}}
+      email: {{docker-email}}
+      password: {{docker-password}}
+      repository: krishicks/remote-file-resource
+
+jobs:
+  - name: test
+    plan:
+      - get: remote-file-resource
+        trigger: true
+      - task: unit
+        file: remote-file-resource/ci/unit.yml
+
+  - name: publish-image
+    plan:
+      - get: remote-file-resource
+        params:
+          submodules: none
+        passed: [test]
+      - task: build-image
+        file: remote-file-resource/ci/build-image.yml
+      - put: remote-file-resource-image
+        params:
+          build: built-image

@@ -1,0 +1,28 @@
+---
+platform: linux
+image: docker:///concourse/static-golang
+
+inputs:
+- name: remote-file-resource
+  path: go/src/github.com/krishicks/remote-file-resource
+
+outputs:
+- name: built-image
+
+run:
+  path: bash
+  args:
+  - -exc
+  - |
+    root=$PWD
+
+    export GOPATH=$root/gopath
+    export PATH=$GOPATH/bin:$PATH
+
+    build_dir=$root/built-resource
+
+    cd $GOPATH/src/github.com/krishicks/remote-file-resource
+
+    make
+
+    cp -a assets/ Dockerfile $build_dir

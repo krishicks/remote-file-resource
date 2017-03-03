@@ -1,0 +1,26 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: latest
+
+inputs:
+- name: remote-file-resource
+  path: go/src/github.com/krishicks/remote-file-resource
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    export GOPATH=$PWD/go
+    export PATH=$GOPATH/bin:$PATH
+
+    go get github.com/onsi/ginkgo/ginkgo
+
+    cd go/src/github.com/krishicks/remote-file-resource
+      ginkgo -r -p -race -randomizeAllSpecs
+    cd -
