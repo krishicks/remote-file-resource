@@ -1,6 +1,10 @@
 ---
 platform: linux
-image: docker:///concourse/static-golang
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
 
 inputs:
 - name: remote-file-resource
