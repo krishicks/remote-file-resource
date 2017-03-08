@@ -32,3 +32,5 @@ jobs:
       - put: remote-file-resource-image
         params:
           build: built-resource
+        get_params:
+          skip_download: true
