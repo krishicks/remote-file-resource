@@ -52,8 +52,10 @@ func main() {
 		log.Fatalf("error writing file: %s", err)
 	}
 
-	response := types.Response{
-		{ETag: actual},
+	response := types.InResponse{
+		Version: types.Version{
+			ETag: actual,
+		},
 	}
 
 	err = json.NewEncoder(os.Stdout).Encode(response)

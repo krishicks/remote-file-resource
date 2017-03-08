@@ -101,7 +101,7 @@ var _ = Describe("Check", func() {
 			})
 
 			It("responds with the same version as was provided", func() {
-				expectedOutput := types.Response{
+				expectedOutput := types.CheckResponse{
 					{ETag: "old-version"},
 				}
 
@@ -130,7 +130,7 @@ var _ = Describe("Check", func() {
 			})
 
 			It("responds with the same version as was provided and the new version", func() {
-				expectedOutput := types.Response{
+				expectedOutput := types.CheckResponse{
 					{ETag: "old-version"},
 					{ETag: "new-version"},
 				}

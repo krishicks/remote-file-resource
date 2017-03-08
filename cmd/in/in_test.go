@@ -121,8 +121,10 @@ var _ = Describe("In", func() {
 			})
 
 			It("responds with the version that was downloaded", func() {
-				expectedOutput := types.Response{
-					{ETag: "expected-version"},
+				expectedOutput := types.InResponse{
+					Version: types.Version{
+						ETag: "expected-version",
+					},
 				}
 
 				bs, err := json.Marshal(expectedOutput)

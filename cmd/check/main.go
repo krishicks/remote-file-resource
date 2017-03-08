@@ -23,13 +23,13 @@ func main() {
 
 	actual := resp.Header.Get("ETag")
 
-	var response types.Response
+	var response types.CheckResponse
 	if actual == request.Version.ETag {
-		response = types.Response{
+		response = types.CheckResponse{
 			{ETag: request.Version.ETag},
 		}
 	} else {
-		response = types.Response{
+		response = types.CheckResponse{
 			{ETag: request.Version.ETag},
 			{ETag: actual},
 		}

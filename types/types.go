@@ -5,6 +5,8 @@ type CheckRequest struct {
 	Version Version `json:"version,omitempty"`
 }
 
+type CheckResponse []Version
+
 type Source struct {
 	URI string `json:"uri"`
 }
@@ -19,7 +21,15 @@ type InParams struct {
 	Filename string `json:"filename"`
 }
 
-type Response []Version
+type InResponse struct {
+	Version  Version  `json:"version"`
+	Metadata Metadata `json:"metadata"`
+}
+
+type Metadata struct {
+	Filename string `json:"filename"`
+	URI      string `json:"uri"`
+}
 
 type Version struct {
 	ETag string `json:"etag"`
