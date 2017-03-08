@@ -56,9 +56,15 @@ func main() {
 		Version: types.Version{
 			ETag: actual,
 		},
-		Metadata: types.Metadata{
-			Filename: request.Params.Filename,
-			URI:      request.Source.URI,
+		Metadata: []types.MetadataField{
+			{
+				Name:  "filename",
+				Value: request.Params.Filename,
+			},
+			{
+				Name:  "uri",
+				Value: request.Source.URI,
+			},
 		},
 	}
 

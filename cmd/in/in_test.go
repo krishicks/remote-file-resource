@@ -125,16 +125,22 @@ var _ = Describe("In", func() {
 					Version: types.Version{
 						ETag: "expected-version",
 					},
-					Metadata: types.Metadata{
-						Filename: "release.tgz",
-						URI:      server.URL() + "/releases/latest",
+					Metadata: []types.MetadataField{
+						{
+							Name:  "filename",
+							Value: "release.tgz",
+						},
+						{
+							Name:  "uri",
+							Value: server.URL() + "/releases/latest",
+						},
 					},
 				}
 
 				bs, err := json.Marshal(expectedOutput)
 				Expect(err).NotTo(HaveOccurred())
 
-				Eventually(session.Out).Should(gbytes.Say(string(bs)))
+				Eventually(session.Out.Contents).Should(MatchJSON(string(bs)))
 			})
 
 			It("exits with no error", func() {

@@ -22,13 +22,13 @@ type InParams struct {
 }
 
 type InResponse struct {
-	Version  Version  `json:"version"`
-	Metadata Metadata `json:"metadata"`
+	Version  Version         `json:"version"`
+	Metadata []MetadataField `json:"metadata"`
 }
 
-type Metadata struct {
-	Filename string `json:"filename"`
-	URI      string `json:"uri"`
+type MetadataField struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 type Version struct {
