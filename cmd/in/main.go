@@ -56,6 +56,10 @@ func main() {
 		Version: types.Version{
 			ETag: actual,
 		},
+		Metadata: types.Metadata{
+			Filename: request.Params.Filename,
+			URI:      request.Source.URI,
+		},
 	}
 
 	err = json.NewEncoder(os.Stdout).Encode(response)

@@ -125,6 +125,10 @@ var _ = Describe("In", func() {
 					Version: types.Version{
 						ETag: "expected-version",
 					},
+					Metadata: types.Metadata{
+						Filename: "release.tgz",
+						URI:      server.URL() + "/releases/latest",
+					},
 				}
 
 				bs, err := json.Marshal(expectedOutput)
