@@ -15,6 +15,7 @@ resources:
 
 jobs:
   - name: test
+    serial: true
     plan:
       - get: remote-file-resource
         trigger: true
@@ -22,6 +23,7 @@ jobs:
         file: remote-file-resource/ci/unit.yml
 
   - name: publish-image
+    serial: true
     plan:
       - get: remote-file-resource
         passed: [test]
