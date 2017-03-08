@@ -16,15 +16,8 @@ func main() {
 		log.Fatalf("usage: %s <destination>", os.Args[0])
 	}
 
-	destination := os.Args[1]
-
-	err := os.MkdirAll(destination, 0755)
-	if err != nil {
-		log.Fatalf("error creating destination: %s", err)
-	}
-
 	var request types.InRequest
-	err = json.NewDecoder(os.Stdin).Decode(&request)
+	err := json.NewDecoder(os.Stdin).Decode(&request)
 	if err != nil {
 		log.Fatalf("error reading request from stdin: %s\n", err)
 	}
@@ -41,7 +34,14 @@ func main() {
 		log.Fatalf("error downloading artifact; version %s is no longer available", request.Version.ETag)
 	}
 
-	f, err := os.Create(filepath.Join(os.Args[1], request.Params.Filename))
+	destination := os.Args[1]
+
+	err = os.MkdirAll(destination, 0755)
+	if err != nil {
+		log.Fatalf("error creating destination: %s", err)
+	}
+
+	f, err := os.Create(filepath.Join(destination, request.Params.Filename))
 	if err != nil {
 		log.Fatalf("error creating file: %s", err)
 	}
